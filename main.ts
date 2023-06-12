@@ -1,6 +1,6 @@
-function schietWeg () {
+function schietWeg (openTijd: number) {
     music.playSoundEffect(music.builtinSoundEffect(soundExpression.slide), SoundExpressionPlayMode.InBackground)
-    servos.P0.setAngle(135)
+    servos.P0.setAngle(hoek_schietweg)
     basic.showLeds(`
         . # . # .
         . # . # .
@@ -8,7 +8,8 @@ function schietWeg () {
         # . . . #
         . # # # .
         `)
-    basic.pause(5000)
+    basic.pause(openTijd)
+    servos.P0.setAngle(hoek_idle)
 }
 function telAf () {
     for (let index = 0; index < 6; index++) {
@@ -19,7 +20,7 @@ function telAf () {
 }
 function init () {
     game.setScore(5)
-    servos.P0.setAngle(45)
+    servos.P0.setAngle(hoek_idle)
 }
 function pinkePijleke () {
     basic.showLeds(`
@@ -45,11 +46,19 @@ function pinkePijleke () {
     }
     basic.pause(50)
 }
+let hoek_schietweg = 0
+let hoek_idle = 0
+hoek_idle = 135
+hoek_schietweg = 45
 basic.forever(function () {
     init()
     while (!(input.buttonIsPressed(Button.A))) {
         pinkePijleke()
     }
-    telAf()
-    schietWeg()
+    if (input.buttonIsPressed(Button.B)) {
+        schietWeg(1000)
+    } else {
+        telAf()
+        schietWeg(5000)
+    }
 })
