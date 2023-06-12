@@ -14,9 +14,7 @@ function telAf () {
     for (let index = 0; index < 6; index++) {
         music.playSoundEffect(music.builtinSoundEffect(soundExpression.spring), SoundExpressionPlayMode.InBackground)
         basic.showNumber(game.score())
-        basic.pause(300)
         game.addScore(-1)
-        basic.pause(300)
     }
 }
 function init () {
