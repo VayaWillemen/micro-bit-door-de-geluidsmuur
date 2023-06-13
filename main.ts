@@ -48,8 +48,8 @@ function pinkePijleke () {
 }
 let hoek_schietweg = 0
 let hoek_idle = 0
-hoek_idle = 135
-hoek_schietweg = 45
+hoek_idle = 150
+hoek_schietweg = 30
 basic.forever(function () {
     init()
     while (!(input.buttonIsPressed(Button.A))) {
