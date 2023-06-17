@@ -19,7 +19,7 @@ function telAf () {
     }
 }
 function init () {
-    game.setScore(5)
+    game.setScore(3)
     servos.P0.setAngle(hoek_idle)
 }
 function pinkePijleke () {
